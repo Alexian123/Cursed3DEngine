@@ -9,6 +9,16 @@ add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/KeyboardHandler.cpp
+    src/Map.cpp
+    src/Player.cpp
+    src/Renderer.cpp
+    src/Vector2F.cpp
+)
+
+target_include_directories(${PROJECT_NAME}
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
 )
 
 target_link_libraries(${PROJECT_NAME} ncursesw)
