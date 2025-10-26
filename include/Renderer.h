@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "Map.h"
+#include "Vector2F.h"
 
 namespace Cursed3DEngine
 {
@@ -18,7 +19,8 @@ namespace Cursed3DEngine
         static constexpr float FOV = 3.14159f / 4.0f;
         static constexpr float RAY_DEPTH = 16.0f;
 
-        float clearScreenTime = 0.0f;
+        Vector2F oldPlayerPos;
+        float oldPlayerRotationAngle = 0.0f;
         
     public:
         Renderer(int screenWidth, int screenHeight);

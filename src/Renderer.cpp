@@ -9,7 +9,7 @@
 using namespace Cursed3DEngine;
 
 Renderer::Renderer(int screenWidth, int screenHeight)
-    : screenWidth(screenWidth), screenHeight(screenHeight)
+    : screenWidth(screenWidth), screenHeight(screenHeight), oldPlayerPos(Vector2F())
 {
     setlocale(LC_ALL, "");
 
@@ -28,13 +28,16 @@ Renderer::~Renderer()
 
 void Renderer::renderScene(float elapsedTime, const Player &player, const Map &map)
 {
-    clearScreenTime += elapsedTime;
-    if (clearScreenTime >= 0.1f) {
+    const Vector2F &playerPos = player.getPosition();
+    float playerRotationAngle = player.getRotationAngle();
+    if (oldPlayerPos != playerPos || oldPlayerRotationAngle != playerRotationAngle) {
         clearok(stdscr, TRUE);
-        clearScreenTime = 0.0f;
+        oldPlayerPos = playerPos;
+        oldPlayerRotationAngle = playerRotationAngle;
     }
-
     erase();
+
+
     renderWorld(map, player);
     renderMap(map, player);
     renderHUD(player, elapsedTime);
