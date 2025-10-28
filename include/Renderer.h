@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Vector2F.h"
+#include "Utils.h"
 
 namespace Cursed3DEngine
 {
@@ -16,7 +17,7 @@ namespace Cursed3DEngine
         const int screenWidth;
         const int screenHeight;
 
-        static constexpr float FOV = 3.14159f / 4.0f;
+        static constexpr float FOV = TrigUtils::PI_4;
         static constexpr float RAY_DEPTH = 16.0f;
 
         Vector2F oldPlayerPos;

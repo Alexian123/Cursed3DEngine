@@ -1,11 +1,15 @@
 #include "Player.h"
+#include "Utils.h"
 
 #include <cmath>
 
 using namespace Cursed3DEngine;
 
 Player::Player(float startingX, float startingY, float startingRotationAngle) 
-    : position(startingX, startingY), rotationAngle(startingRotationAngle) {}
+    : 
+    position(startingX, startingY), 
+    rotationAngle(TrigUtils::getNormalizedAngle(startingRotationAngle)) 
+    {}
 
 Player::~Player() {}
 
@@ -26,7 +30,7 @@ float Player::getRotationAngle() const
 
 void Player::setRotationAngle(float rotationAngle)
 {
-    this->rotationAngle = rotationAngle;
+    this->rotationAngle = TrigUtils::getNormalizedAngle(rotationAngle);
 }
 
 float Player::getSpeed() const
@@ -64,10 +68,12 @@ void Player::applyMovement(PlayerMovement movement, float elapsedTime, const Map
 
         case ROTATE_CR:
             rotationAngle += (speed * 0.75f) * elapsedTime;
+            rotationAngle = TrigUtils::getNormalizedAngle(rotationAngle);
             break;
 
         case ROTATE_CCR:
             rotationAngle -= (speed * 0.75f) * elapsedTime;
+            rotationAngle = TrigUtils::getNormalizedAngle(rotationAngle);
             break;
     }
 }

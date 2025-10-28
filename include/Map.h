@@ -8,7 +8,10 @@ namespace Cursed3DEngine
     {
         AIR_SYMBOL    = '.',
         WALL_SYMBOL   = '#',
-        PLAYER_SYMBOL = '@'
+        PLAYER_FACING_N = '^',
+        PLAYER_FACING_S = 'v',
+        PLAYER_FACING_W = '<',
+        PLAYER_FACING_E = '>',
     };
 
     class Map

@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
     src/Player.cpp
     src/Renderer.cpp
     src/Vector2F.cpp
+    src/Utils.cpp
 )
 
 target_include_directories(${PROJECT_NAME}

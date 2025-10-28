@@ -186,7 +186,18 @@ void Renderer::renderMap(const Map &map, const Player &player)
     }
 
     const Vector2F &playerPos = player.getPosition();
-    mvaddch((int)playerPos.x, screenWidth - mapWidth + (int)playerPos.y, PLAYER_SYMBOL);
+
+    float playerAngle = player.getRotationAngle();
+    int playerSymbol = PLAYER_FACING_E;
+    if (playerAngle >= TrigUtils::PI_4 && playerAngle < TrigUtils::_3PI_4) {
+        playerSymbol = PLAYER_FACING_S;
+    } else if (playerAngle >= TrigUtils::_3PI_4 && playerAngle < TrigUtils::_5PI_4) {
+        playerSymbol = PLAYER_FACING_W;
+    } else if (playerAngle >= TrigUtils::_5PI_4 && playerAngle < TrigUtils::_7PI_4) {
+        playerSymbol = PLAYER_FACING_N;
+    }
+    
+    mvaddch((int)playerPos.x, screenWidth - mapWidth + (int)playerPos.y, playerSymbol);
 }
 
 void Renderer::renderHUD(const Player &player, float elapsedTime)
