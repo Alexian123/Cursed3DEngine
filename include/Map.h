@@ -17,13 +17,14 @@ namespace Cursed3DEngine
     class Map
     {
     private:
-        const int width;
-        const int height;
+        int width;
+        int height;
         std::wstring layout;
 
     public:
         Map();
         Map(int width, int height, std::wstring layout);
+        Map(std::string mapFile);
         ~Map();
 
         int getWidth() const;

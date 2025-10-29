@@ -15,24 +15,7 @@ int main()
 
 	KeyboardHandler kbdHandler;
 	
-	std::wstring mapLayout;
-	mapLayout += L"################";
-	mapLayout += L"#..............#";
-	mapLayout += L"#.......########";
-	mapLayout += L"#..............#";
-	mapLayout += L"#......##......#";
-	mapLayout += L"#......##......#";
-	mapLayout += L"#..............#";
-	mapLayout += L"###............#";
-	mapLayout += L"##.............#";
-	mapLayout += L"#......####..###";
-	mapLayout += L"#......#.......#";
-	mapLayout += L"#......#.......#";
-	mapLayout += L"#..............#";
-	mapLayout += L"#......#########";
-	mapLayout += L"#..............#";
-	mapLayout += L"################";
-	Map map(16, 16, mapLayout);
+	Map map("../resources/maps/map1.txt");
 
 	Player player(14.7f, 5.09f, 0.0f);
 
